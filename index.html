@@ -84,7 +84,7 @@
             height: 100vh;
             min-height: 600px;
             width: 100%;
-            background-image: url('turma.jpg');
+            background-image: url('assets/turma.jpg');
             background-size: cover;
             background-position: center 35%;
             display: flex;
@@ -287,7 +287,7 @@
         
         .polaroid-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 28px;
         }
         
@@ -315,7 +315,7 @@
         
         .polaroid-img {
             width: 100%;
-            height: 200px;
+            height: 260px;
             background: #1e293b;
             border-radius: 4px;
             margin-bottom: 10px;
@@ -331,6 +331,37 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .polaroid:first-child {
+            grid-column: 1 / -1;
+        }
+
+        .polaroid:first-child .polaroid-img {
+            height: 420px;
+        }
+
+        .polaroid:first-child .polaroid-img img {
+            object-position: center 38%;
+        }
+
+        @media (max-width: 700px) {
+            .polaroid-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .polaroid:first-child {
+                grid-column: auto;
+            }
+
+            .polaroid:first-child .polaroid-img,
+            .polaroid-img {
+                height: 240px;
+            }
+
+            .polaroid {
+                transform: none;
+            }
         }
         /* Legenda manuscrita estilo caneta na Polaroid */
         
@@ -371,7 +402,7 @@
             <span class="badge-ano">A melhor turma da história!</span>
             <h1>Anuário Terceirão 2026</h1>
             <p>Dos perrengues nas provas às resenhas no intervalo: tudo o que marcou o nosso último ano juntos.</p>
-            <a href="#conteudo" class="scroll-btn">Explorar o Anuário ↓</a>
+            <a href="#conteudo" class="scroll-btn">Explorar o Anuário</a>
         </div>
     </header>
 
@@ -380,9 +411,9 @@
 
         <!-- Botões das Abas -->
         <div class="tabs-header">
-            <button class="tab-btn active" data-tab="panelinhas" onclick="abrirAba('panelinhas')">🔥 Panelinhas</button>
-            <button class="tab-btn" data-tab="memorias" onclick="abrirAba('memorias')">📸 Memórias & Polaroids</button>
-            <button class="tab-btn" data-tab="premios" onclick="abrirAba('premios')">🏆 Melhores do Ano</button>
+            <button class="tab-btn active" data-tab="panelinhas" onclick="abrirAba('panelinhas')">Panelinhas</button>
+            <button class="tab-btn" data-tab="memorias" onclick="abrirAba('memorias')">Memórias & Polaroids</button>
+            <button class="tab-btn" data-tab="premios" onclick="abrirAba('premios')">Melhores do Ano</button>
         </div>
 
         <!-- ABA 1: PANELINHAS -->
@@ -422,24 +453,24 @@
             <div class="polaroid-grid">
                 <figure class="polaroid">
                     <div class="polaroid-img">
-                        <img src="turma.jpg" alt="Foto oficial da turma">
+                        <img src="assets/turma.jpg" alt="Foto oficial da turma">
                     </div>
-                    <figcaption>Foto Oficial da Turma 📸</figcaption>
+                    <figcaption>Foto Oficial da Turma</figcaption>
                 </figure>
 
                 <figure class="polaroid">
                     <div class="polaroid-img">Substitua pela foto do Trote</div>
-                    <figcaption>Dia do Trote / Fantasia 🎉</figcaption>
+                    <figcaption>Dia do Trote / Fantasia</figcaption>
                 </figure>
 
                 <figure class="polaroid">
                     <div class="polaroid-img">Substitua pela foto dos Jogos</div>
-                    <figcaption>Interclasse e Torcida 🏆</figcaption>
+                    <figcaption>Interclasse e Torcida</figcaption>
                 </figure>
 
                 <figure class="polaroid">
                     <div class="polaroid-img">Substitua por foto espontânea</div>
-                    <figcaption>Resenha pós-aula 🍕</figcaption>
+                    <figcaption>Resenha pós-aula</figcaption>
                 </figure>
             </div>
         </section>
@@ -452,21 +483,21 @@
             <div class="grid-cards">
                 <article class="card-panelinha">
                     <span class="tag-grupo">Categoria #01</span>
-                    <h3>😴 Mais Dorminhoco(a)</h3>
+                    <h3>Mais Dorminhoco(a)</h3>
                     <p>Consegue dormir sentado na primeira carteira mesmo com o professor explicando matéria de prova.</p>
                     <div class="membros">Vencedor(a): Nome do Aluno</div>
                 </article>
 
                 <article class="card-panelinha">
                     <span class="tag-grupo">Categoria #02</span>
-                    <h3>⏰ Rei / Rainha do Atraso</h3>
+                    <h3>Rei / Rainha do Atraso</h3>
                     <p>Chega na segunda aula com a mesma tranquilidade de quem chegou 15 minutos antes do portão abrir.</p>
                     <div class="membros">Vencedor(a): Nome do Aluno</div>
                 </article>
 
                 <article class="card-panelinha">
                     <span class="tag-grupo">Categoria #03</span>
-                    <h3>🎤 Palestrinha da Sala</h3>
+                    <h3>Palestrinha da Sala</h3>
                     <p>Sempre tem uma pergunta extra faltando 1 minuto para o sinal bater.</p>
                     <div class="membros">Vencedor(a): Nome do Aluno</div>
                 </article>
