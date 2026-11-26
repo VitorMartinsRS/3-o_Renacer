@@ -42,22 +42,40 @@
             position: fixed;
             top: 0;
             width: 100%;
+            height: 64px;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
+            padding: 0 5%;
             background: rgba(11, 21, 41, 0.75);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
         
         .logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 800;
+            display: flex;
+            flex: 0 0 auto;
+            align-items: center;
+            gap: 8px;
+            line-height: 0;
+            text-decoration: none;
+        }
+
+        .logo img {
+            display: block;
+            width: auto;
+            height: 54px;
+            object-fit: contain;
+        }
+
+        .logo-name {
             color: var(--accent-cyan);
-            letter-spacing: -0.5px;
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+            white-space: nowrap;
         }
         
         .nav-links {
@@ -332,35 +350,179 @@
             height: 100%;
             object-fit: cover;
         }
-
+        
         .polaroid:first-child {
             grid-column: 1 / -1;
         }
-
+        
         .polaroid:first-child .polaroid-img {
             height: 420px;
         }
-
+        
         .polaroid:first-child .polaroid-img img {
             object-position: center 38%;
         }
-
-        @media (max-width: 700px) {
-            .polaroid-grid {
-                grid-template-columns: 1fr;
+        
+        @media (max-width: 900px) {
+            nav {
+                gap: 16px;
+                padding: 0 20px;
+            }
+            .logo img {
+                height: 48px;
             }
 
+            .nav-links {
+                flex: 1;
+                min-width: 0;
+                width: 100%;
+                justify-content: flex-start;
+                gap: 20px;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                scrollbar-width: none;
+            }
+            .nav-links::-webkit-scrollbar,
+            .tabs-header::-webkit-scrollbar {
+                display: none;
+            }
+            .nav-links a {
+                white-space: nowrap;
+            }
+        }
+        
+        @media (max-width: 700px) {
+            nav {
+                height: 56px;
+                justify-content: flex-start;
+                gap: 8px;
+                padding: 0 8px;
+            }
+            .logo img {
+                height: 40px;
+            }
+            .nav-links {
+                flex: 1;
+                min-width: 0;
+                width: auto;
+                gap: 16px;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 0 8px;
+            }
+            .nav-links li {
+                flex: 0 0 auto;
+            }
+            .nav-links a {
+                display: block;
+                padding: 18px 8px;
+                font-size: 0.78rem;
+                white-space: nowrap;
+            }
+            .hero {
+                height: 72vh;
+                min-height: 480px;
+                background-position: center 30%;
+                padding: 0 16px 48px;
+            }
+            .badge-ano {
+                font-size: 1rem;
+                padding: 4px 12px;
+            }
+            .hero h1 {
+                font-size: clamp(2.2rem, 12vw, 3.2rem);
+                letter-spacing: -1px;
+            }
+            .hero p {
+                max-width: 520px;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+            main {
+                padding: 28px 14px 70px;
+            }
+            .tabs-header {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scrollbar-width: none;
+                padding-bottom: 8px;
+                margin-bottom: 36px;
+            }
+            .tab-btn {
+                flex: 0 0 auto;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+            .section-desc {
+                margin-bottom: 24px;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+            .polaroid-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
             .polaroid:first-child {
                 grid-column: auto;
             }
-
             .polaroid:first-child .polaroid-img,
             .polaroid-img {
                 height: 240px;
             }
-
             .polaroid {
                 transform: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo img {
+                height: 36px;
+            }
+            .logo-name {
+                font-size: 0.85rem;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+            .nav-links a {
+                padding: 18px 4px;
+                font-size: 0.72rem;
+            }
+            .hero {
+                min-height: 430px;
+                padding-bottom: 36px;
+            }
+            .hero h1 {
+                font-size: clamp(2rem, 11vw, 2.7rem);
+            }
+            .hero p {
+                font-size: 0.88rem;
+            }
+            .scroll-btn {
+                padding: 11px 20px;
+            }
+            main {
+                padding-right: 12px;
+                padding-left: 12px;
+            }
+            .section-title {
+                font-size: 1.55rem;
+            }
+            .tab-btn {
+                padding: 9px 13px;
+                font-size: 0.82rem;
+            }
+            .card-panelinha {
+                padding: 20px;
+            }
+            .polaroid-img {
+                height: 210px;
             }
         }
         /* Legenda manuscrita estilo caneta na Polaroid */
@@ -387,13 +549,11 @@
 <body>
 
     <nav>
-        <div class="logo">TERCEIRÃO '26</div>
-        <ul class="nav-links">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#conteudo" onclick="abrirAba('panelinhas')">Panelinhas</a></li>
-            <li><a href="#conteudo" onclick="abrirAba('memorias')">Memórias</a></li>
-            <li><a href="#conteudo" onclick="abrirAba('premios')">Votação / Prêmios</a></li>
-        </ul>
+        <a class="logo" href="#inicio">
+            <img src="assets/WhatsApp%20Image%202026-11-25%20at%2019.27.55.png" alt="Logo da turma Renacer">
+            <span class="logo-name">Terceirão Renacer</span>
+        </a>
+
     </nav>
 
     <!-- Tela Inicial com a Foto da Turma -->
@@ -413,6 +573,11 @@
         <div class="tabs-header">
             <button class="tab-btn active" data-tab="panelinhas" onclick="abrirAba('panelinhas')">Panelinhas</button>
             <button class="tab-btn" data-tab="memorias" onclick="abrirAba('memorias')">Memórias & Polaroids</button>
+            <button class="tab-btn" data-tab="trotes" onclick="abrirAba('trotes')">Trotes</button>
+            <button class="tab-btn" data-tab="aula-saudade" onclick="abrirAba('aula-saudade')">Aula da Saudade</button>
+            <button class="tab-btn" data-tab="memes" onclick="abrirAba('memes')">Memes</button>
+            <button class="tab-btn" data-tab="alunos" onclick="abrirAba('alunos')">Alunos</button>
+            <button class="tab-btn" data-tab="formatura" onclick="abrirAba('formatura')">Formatura</button>
             <button class="tab-btn" data-tab="premios" onclick="abrirAba('premios')">Melhores do Ano</button>
         </div>
 
@@ -471,6 +636,130 @@
                 <figure class="polaroid">
                     <div class="polaroid-img">Substitua por foto espontânea</div>
                     <figcaption>Resenha pós-aula</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ABA: TROTES -->
+        <section id="trotes" class="tab-panel">
+            <h2 class="section-title">Trotes da Turma</h2>
+            <p class="section-desc">As fantasias, brincadeiras e lembranças dos nossos trotes.</p>
+
+            <div class="polaroid-grid">
+                <figure class="polaroid">
+                    <div class="polaroid-img">Adicione aqui a foto do primeiro trote</div>
+                    <figcaption>Primeiro trote</figcaption>
+                </figure>
+
+                <figure class="polaroid">
+                    <div class="polaroid-img">Adicione aqui a foto das fantasias</div>
+                    <figcaption>Dia das fantasias</figcaption>
+                </figure>
+
+                <figure class="polaroid">
+                    <div class="polaroid-img">Adicione aqui a foto da turma</div>
+                    <figcaption>Todo mundo junto</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ABA: AULA DA SAUDADE -->
+        <section id="aula-saudade" class="tab-panel">
+            <h2 class="section-title">Aula da Saudade</h2>
+            <p class="section-desc">Registros do nosso último encontro especial como turma.</p>
+
+            <div class="polaroid-grid">
+                <figure class="polaroid">
+                    <div class="polaroid-img">Adicione aqui a foto da aula</div>
+                    <figcaption>Nosso último encontro</figcaption>
+                </figure>
+
+                <figure class="polaroid">
+                    <div class="polaroid-img">Adicione aqui a foto dos colegas</div>
+                    <figcaption>Momentos com a turma</figcaption>
+                </figure>
+
+                <figure class="polaroid">
+                    <div class="polaroid-img">Adicione aqui a foto das lembranças</div>
+                    <figcaption>Boas lembranças</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ABA: MEMES -->
+        <section id="memes" class="tab-panel">
+            <h2 class="section-title">Memes da Turma</h2>
+            <p class="section-desc">Os momentos e piadas internas que viraram meme.</p>
+
+            <div class="polaroid-grid">
+                <figure class="polaroid">
+                    <div class="polaroid-img">Adicione aqui o meme da turma</div>
+                    <figcaption>O clássico da sala</figcaption>
+                </figure>
+
+                <figure class="polaroid">
+                    <div class="polaroid-img">Adicione aqui outro meme</div>
+                    <figcaption>Quem nunca?</figcaption>
+                </figure>
+
+                <figure class="polaroid">
+                    <div class="polaroid-img">Adicione aqui mais um meme</div>
+                    <figcaption>Um dia normal de aula</figcaption>
+                </figure>
+            </div>
+        </section>
+
+
+        <!-- ABA: ALUNOS -->
+        <section id="alunos" class="tab-panel">
+            <h2 class="section-title">Nossa Turma</h2>
+            <p class="section-desc">Um espaço para apresentar cada aluno da sala.</p>
+
+            <div class="grid-cards">
+                <article class="card-panelinha">
+                    <span class="tag-grupo">Aluno(a)</span>
+                    <h3>Nome do aluno</h3>
+                    <p>Adicione uma foto e uma curiosidade sobre este colega.</p>
+                </article>
+
+                <article class="card-panelinha">
+                    <span class="tag-grupo">Aluno(a)</span>
+                    <h3>Nome do aluno</h3>
+                    <p>Adicione uma foto e uma curiosidade sobre este colega.</p>
+                </article>
+
+                <article class="card-panelinha">
+                    <span class="tag-grupo">Aluno(a)</span>
+                    <h3>Nome do aluno</h3>
+                    <p>Adicione uma foto e uma curiosidade sobre este colega.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ABA 4: FORMATURA -->
+        <section id="formatura" class="tab-panel">
+            <h2 class="section-title">Fotos da Formatura</h2>
+            <p class="section-desc">Os momentos mais especiais da nossa conquista.</p>
+
+            <div class="polaroid-grid">
+                <figure class="polaroid">
+                    <div class="polaroid-img">Substitua pela foto da cerimônia</div>
+                    <figcaption>A cerimônia</figcaption>
+                </figure>
+
+                <figure class="polaroid">
+                    <div class="polaroid-img">Substitua pela foto da turma</div>
+                    <figcaption>A turma formada</figcaption>
+                </figure>
+
+                <figure class="polaroid">
+                    <div class="polaroid-img">Substitua pela foto da entrega do diploma</div>
+                    <figcaption>Entrega do diploma</figcaption>
+                </figure>
+
+                <figure class="polaroid">
+                    <div class="polaroid-img">Substitua pela foto dos amigos</div>
+                    <figcaption>Com a turma toda</figcaption>
                 </figure>
             </div>
         </section>
